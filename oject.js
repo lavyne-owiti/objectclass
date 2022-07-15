@@ -15,18 +15,24 @@
 //   }
 //   console.log(friut.cost(4));
 
-function calculateFruitCost(fruitName, quantity){
+function calculateFruitCost(fruit, quantity){
+
+fruitName={kiwi:120,orange:80,banana:100,grapes:90,apple:60}
+
+for (let a=0;a<Object.keys(fruitName).length;a++){
+  if(fruit===Object.keys(fruitName)[a]){
+    console.log(`${quantity} ${fruit} for KES ${Object.values(fruitName)[a]*quantity}`);
+  } 
+  
+}
+}
+calculateFruitCost("orange",5)
+
 //     let result=Object.entries(fruitName).filter(function([key,value])
 //     {
 //       return `${quantity} for KES ${value*quantity}`
 //     },Object.fromEntries);   
 // }
-for (const friut in fruitName){
- let result= quantity*fruitName[friut]
-  console.log(`${quantity} ${friut} for KES ${result}`);
-}
-}
-calculateFruitCost(fruitName={kiwi:120,orange:80,banana:100,grapes:90,apple:60},5)
 
 
 // # Write a class KioskCalc that has the following fruitsPriceList object.
@@ -37,17 +43,20 @@ calculateFruitCost(fruitName={kiwi:120,orange:80,banana:100,grapes:90,apple:60},
 // # getTotalCost( ) method.
 // # kioskCalc.getTotalCost( ) // returns “2 orange for KES 60”
 
-// class KioskCalc{
-//   constructor(name,price){
-//     // this.friutsPriceList={ 'orannge':30,'mango':15,'avocado':40};
-//     this.name=name
-//     this.price=price
+class KioskCalc{
+  constructor(name,price){
+    this.friutsPriceList={ 'orange':30,'mango':15,'avocado':40,};
+    this.name=name
+    this.price=price
+  }
 
-//   }
+}
+let kioskCalc= new KioskCalc('apple',50)
+console.log(kioskCalc);
+KioskCalc.prototype.getTotalCost=function(friut,quantity){
+  return `${quantity} ${friut} for KES ${quantity*this.friutsPriceList[friut]}`
+}
+console.log(kioskCalc.getTotalCost("apple",4));
 
-// }
-// let kioskCalc= new KioskCalc('apple',50)
-// KioskCalc.prototype.getTotalCost=function(quantity){
-//   return `${quantity} ${this.name} for KES ${quantity*this.price}`
-// }
-// console.log(kioskCalc.getTotalCost(4));
+
+
